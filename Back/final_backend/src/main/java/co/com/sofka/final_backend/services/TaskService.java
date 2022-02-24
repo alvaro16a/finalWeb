@@ -12,45 +12,53 @@ public class TaskService {
     @Autowired
     TaskRepository repository;
 
-    public Iterable<Task> listTasks(){
+    public Iterable<Task> listTasks() {
         return repository.findAll();
     }
 
-    public Task save(Task task){
+    public Task save(Task task) {
         return repository.save(task);
     }
 
-    public void delete(Long id){
+    public void delete(Long id) {
         try {
             repository.deleteById(id);
         } catch (Exception e) {
         }
     }
 
-
-
-
-  /*  public void deleteTask(Long id){
-        repository.deleteById(id);
+    public Task get(Long id) {
+        return repository.findById(id).orElseThrow();
     }
 
- /*   public void deleteAll(){
-        repository.deleteAll();
+    public void deleteAll() {
+       repository.deleteAll();
     }
 
-    public Task get(Long id){
-         return repository.findById(id).orElseThrow();
-    }
-
-   /* public Task addTask(Task task,Action action){
-        task.getActions().add(action);
-        repository.save(task);
-        return task;
-    }
-    
-    public Task subtractTask(Task task,Action action){
-        task.getActions().removeIf((Action _action) -> _action.getId() == action.getId());
-        repository.save(task);
-        return task;
-    }*/
+    /*
+     * public void deleteTask(Long id){
+     * repository.deleteById(id);
+     * }
+     * 
+     * /* public void deleteAll(){
+     * repository.deleteAll();
+     * }
+     * 
+     * public Task get(Long id){
+     * return repository.findById(id).orElseThrow();
+     * }
+     * 
+     * /* public Task addTask(Task task,Action action){
+     * task.getActions().add(action);
+     * repository.save(task);
+     * return task;
+     * }
+     * 
+     * public Task subtractTask(Task task,Action action){
+     * task.getActions().removeIf((Action _action) -> _action.getId() ==
+     * action.getId());
+     * repository.save(task);
+     * return task;
+     * }
+     */
 }
