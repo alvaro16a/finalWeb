@@ -6,7 +6,7 @@ import co.com.sofka.final_backend.services.*;
 import co.com.sofka.final_backend.models.*;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000") //permite las solicitudes desde esta URL
+//@CrossOrigin(origins = "http://localhost:3000") //permite las solicitudes desde esta URL
 @RequestMapping("/api")
 public class Controller {
 
@@ -20,13 +20,14 @@ public class Controller {
 
     @PostMapping(value = "/action")     //crea una nueva accion
     public Action save(@RequestBody Action action){
+        action.setCompleted(false);
         return actionService.save(action);
     }
 
     @PutMapping(value = "/action")      //modifica una accion en caso de existir el id
     public Action update(@RequestBody Action action){
         if(action.getId() != null){
-            return actionService.save(action);;
+            return actionService.save(action);
         }
         throw new RuntimeException("No existe el id para actualizar");
     }
