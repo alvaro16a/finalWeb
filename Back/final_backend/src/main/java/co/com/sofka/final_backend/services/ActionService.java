@@ -15,12 +15,16 @@ public class ActionService {
         return repository.findAll();
     }
 
-    public Action save(Action todo){
-        return repository.save(todo);
+    public Action save(Action action){
+        return repository.save(action);
     }
 
     public void delete(Long id){
         repository.delete(get(id));
+    }
+
+    public void deleteAll(){
+        repository.deleteAll();
     }
 
     public Action get(Long id){
