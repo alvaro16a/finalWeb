@@ -5,6 +5,8 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Action {
@@ -22,6 +24,10 @@ public class Action {
 
     @Column() //se crea el atributo nombre el cual debe ser unico, no puede ser nulo y no puede tener mas de 30 caracteres
     private Boolean completed;
+
+    @ManyToOne
+    @JoinColumn(name = "action_id")
+    private Task task;
 
  ///////////////////////////////////////////////////////////////////////////////////////////////////////
  ///Constructores///
