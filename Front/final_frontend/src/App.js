@@ -1,18 +1,17 @@
 import React from 'react';
-import Action from './components/Action';
-import Headboard from './components/Headboard';
+import CreateTask from './components/CreateTask';
+import Task from './components/Task';
 
 
 function App() {
+
+
   return (
-    <div>
-      <table border width="50%" align="center" >
-        <Headboard/>
-        <Action />
-        <Action />
-        <Action />
-        <Action />
-      </table>
+    <div className='container mt-5'>
+      <CreateTask/>
+      <Task/>
+      <Task/>
+      <Task/>
     </div>
   );
 }
