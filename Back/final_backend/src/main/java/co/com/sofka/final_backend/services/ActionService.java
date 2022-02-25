@@ -30,5 +30,12 @@ public class ActionService {
     public Action get(Long id){
          return repository.findById(id).orElseThrow();
     }
-    
+
+    public Action saveActionWithTask(Task task, String nombre){
+         Action action = new Action(nombre,false,task);
+         repository.save(action);
+         repository.flush();
+         return action;
+    }
+
 }

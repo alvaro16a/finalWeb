@@ -73,6 +73,11 @@ public class Controller {
         return actionService.save(action);
     }
 
+    @PostMapping(value = "/action/task/{nombre}") // crea una nueva accion
+    public Action saveActionWithTask(@RequestBody Task action, @PathVariable("nombre") String nombre) {
+        return actionService.saveActionWithTask(action,nombre);
+    }
+
     @PutMapping(value = "/action") // modifica una accion en caso de existir el id
     public Action update(@RequestBody Action action) {
         if (action.getId() != null) {
@@ -80,6 +85,7 @@ public class Controller {
         }
         throw new RuntimeException("No existe el id para actualizar");
     }
+
 
     @DeleteMapping(value = "/action/{id}") // elimina una accion al resivir su id
     public void delete(@PathVariable("id") Long id) {

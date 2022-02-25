@@ -36,9 +36,19 @@ public class Action {
     public Action() {   //Constructor por defecto
     }
 
+    public Action(String name, Boolean completed, Task task) {
+        this.name = name;
+        this.completed = completed;
+        this.task = task;
+    }
+
  ///////////////////////////////////////////////////////////////////////////////////////////////////////
  ///getters y setters///
  ///////////////////////////////////////////////////////////////////////////////////////////////////////  
+
+ 
+
+
 
     public Long getId() { //se generaron getter y setter para todos los atributos excepto para el setter para el id que no puede ser modificado por nadie
         return id;
