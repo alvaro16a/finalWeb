@@ -11,8 +11,7 @@ import co.com.sofka.final_backend.models.*;
 @RequestMapping("/api")
 public class Controller {
 
-    @Autowired
-    private ActionService actionService;
+    
 
     @Autowired
     private TaskService taskservice;
@@ -22,13 +21,13 @@ public class Controller {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    @GetMapping(value = "/tasks") // se obtienen todas las acciones
+    @GetMapping(value = "/tasks") // se obtienen todas las tareas
     public Iterable<Task> ListTask() {
         return taskservice.listTasks();
     }
 
-    @PostMapping(value = "/task") // crea una nueva accion
-    public Task save(@RequestBody Task task) {
+    @PostMapping(value = "/task") // crea una nueva tarea
+    public Task saveTask(@RequestBody Task task) {
         return taskservice.save(task);
     }
 
@@ -42,7 +41,7 @@ public class Controller {
         return taskservice.get(id);
     }
 
-    @DeleteMapping(value = "/tasks") // elimina todas las acciones
+    @DeleteMapping(value = "/tasks") // elimina todas las tareas
     public void deleteTaskAll() {
         taskservice.deleteAll();
     }
@@ -54,10 +53,14 @@ public class Controller {
         }
         throw new RuntimeException("No existe el id para actualizar");
     }
+
+
+
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
     /// action functions///
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    @Autowired
+    private ActionService actionService;
 
     @GetMapping(value = "/actions") // se obtienen todas las acciones
     public Iterable<Action> List() {

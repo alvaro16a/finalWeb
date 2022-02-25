@@ -26,7 +26,7 @@ public class Action {
     private Boolean completed;
 
     @ManyToOne
-    @JoinColumn(name = "action_id")
+    @JoinColumn(name = "acciones")
     private Task task;
 
  ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,11 +34,6 @@ public class Action {
  ///////////////////////////////////////////////////////////////////////////////////////////////////////  
 
     public Action() {   //Constructor por defecto
-    }
-
-    public Action(String name) { //por defecto cada ves que se crea una accion esta incompleta
-        this.name = name;
-        this.completed = false;
     }
 
  ///////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -64,5 +59,14 @@ public class Action {
     public void setCompleted(Boolean completed) {
         this.completed = completed;
     }
+
+    public Task getTask() {
+        return task;
+    }
+
+    public void setTask(Task task) {
+        this.task = task;
+    }
+    
     
 }
