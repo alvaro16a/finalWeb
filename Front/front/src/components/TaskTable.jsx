@@ -1,5 +1,4 @@
-import React, { Fragment, useState } from 'react'
-import { useForm } from 'react-hook-form';
+import React, { Fragment } from 'react'
 import ActionTable from './ActionTable';
 import CreateAction from './CreateAction';
 
@@ -7,13 +6,10 @@ import CreateAction from './CreateAction';
 
 const TaskTable = (props) => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm()
-    const [action, setAction] = useState("")
 
-    const onSubmit = (data, e) => {
-        props.addTask(data.newTask)
-        e.target.reset()
-    }
+
+
+   
 
     const deleteTask =(id) =>{
         const actionsToDelete= props.actions.filter(action => action.task.id == id)

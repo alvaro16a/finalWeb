@@ -20,17 +20,18 @@ function App() {
     setActions(await data.json())
   }
 
-  const postTask = (data) => {
+  const postTask = async (data) => {
     const request = { name: data };
-    fetch(HOST_API + "/task", {
+     fetch(HOST_API + "/task", {
       method: "POST",
       body: JSON.stringify(request),
       headers: {
         'Content-Type': 'application/json'
       }
-    })
+    }).then(getTasks)
+    
   }
-  const postAction = (name, task) => {
+  const postAction = async (name, task) => {
     const request = { name: task.name,id:task.id};
     fetch(HOST_API + "/action/"+name, {
       method: "POST",
@@ -38,10 +39,10 @@ function App() {
       headers: {
         'Content-Type': 'application/json'
       }
-    })
+    }).then(getActions)
   }
 
-  const putAction = (action,name,check) => {
+  const putAction = async (action,name,check) => {
     const request = action
     request.name=name
     request.completed=check
@@ -52,26 +53,25 @@ function App() {
       headers: {
         'Content-Type': 'application/json'
       }
-    })
+    }).then(getActions)
   }
 
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
     fetch(HOST_API + "/task/"+id, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json'
       }
-    })
+    }).then(getTasks)
   }
 
-  const deleteAction = (id) => {
+  const deleteAction = async (id) => {
     fetch(HOST_API + "/action/"+id, {
       method: "DELETE",
       headers: {
         'Content-Type': 'application/json'
       }
-    })
-    getTasks()
+    }).then(getActions)
   }
 
 
@@ -79,7 +79,7 @@ function App() {
   useEffect(() => {           //cuando se pinta nuestra pantalla llamamos a tareas
     getTasks()
     getActions()
-  }, [tasks])
+  }, [])
   // <div className="flex-row">
 
   return (

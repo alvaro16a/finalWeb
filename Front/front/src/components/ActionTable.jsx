@@ -4,11 +4,6 @@ import React from 'react';
 
 const ActionTable = (props) => {
 
-    const handlechange = (action) => {
-       
-        props.editeAction(action, action.name, !action.completed);
-    };
-
     return (
         <div>
             {
