@@ -26,7 +26,7 @@ public class Action {
     private Boolean completed;
 
     @ManyToOne
-    @JoinColumn(name = "acciones")
+    @JoinColumn(name = "id_task")
     private Task task;
 
  ///////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -11,7 +11,7 @@ public class Task {
     @GeneratedValue(strategy = GenerationType.AUTO) // se crea el id dotandolo de incremento automatico
     private Long id;
 
-    @Column(length = 15, nullable = false, unique = true) // se crea el atributo nombre el cual debe ser unico, no puede
+    @Column(length = 25, nullable = false, unique = true) // se crea el atributo nombre el cual debe ser unico, no puede
     private String name;                                                      // ser nulo y no puede tener mas de 15 caracteres
     
 

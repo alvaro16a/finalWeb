@@ -6,7 +6,7 @@ import co.com.sofka.final_backend.services.*;
 import co.com.sofka.final_backend.models.*;
 
 @RestController
-// @CrossOrigin(origins = "http://localhost:3000") //permite las solicitudes
+@CrossOrigin(origins = "http://localhost:3000") //permite las solicitudes
 // desde esta URL
 @RequestMapping("/api")
 public class Controller {
@@ -67,13 +67,7 @@ public class Controller {
         return actionService.listActions();
     }
 
-    @PostMapping(value = "/action") // crea una nueva accion
-    public Action save(@RequestBody Action action) {
-        action.setCompleted(false);
-        return actionService.save(action);
-    }
-
-    @PostMapping(value = "/action/task/{nombre}") // crea una nueva accion
+    @PostMapping(value = "/action/{nombre}") // crea una nueva accion
     public Action saveActionWithTask(@RequestBody Task action, @PathVariable("nombre") String nombre) {
         return actionService.saveActionWithTask(action,nombre);
     }
